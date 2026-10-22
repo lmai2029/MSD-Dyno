@@ -1,0 +1,72 @@
+VERSION "MSD dyno 1"
+
+NS_ :
+
+BS_:
+
+BU_: RP2040 PC
+
+BO_ 1536 PadTemperature: 8 RP2040
+ SG_ DeviceTimeMs : 0|32@1+ (1,0) [0|0] "ms" PC
+ SG_ Value : 32|32@1+ (1,0) [0|0] "degC" PC
+
+BO_ 1537 CaliperTemperature: 8 RP2040
+ SG_ DeviceTimeMs : 0|32@1+ (1,0) [0|0] "ms" PC
+ SG_ Value : 32|32@1+ (1,0) [0|0] "degC" PC
+
+BO_ 1538 BrakePressure: 8 RP2040
+ SG_ DeviceTimeMs : 0|32@1+ (1,0) [0|0] "ms" PC
+ SG_ Value : 32|32@1+ (1,0) [0|0] "psi" PC
+
+BO_ 1539 RotorIRTemperature: 8 RP2040
+ SG_ DeviceTimeMs : 0|32@1+ (1,0) [0|0] "ms" PC
+ SG_ Value : 32|32@1+ (1,0) [0|0] "degC" PC
+
+BO_ 1540 LoadCell: 8 RP2040
+ SG_ DeviceTimeMs : 0|32@1+ (1,0) [0|0] "ms" PC
+ SG_ Value : 32|32@1+ (1,0) [0|0] "N" PC
+
+BO_ 1552 DynoStatus: 8 RP2040
+ SG_ Version : 0|8@1+ (1,0) [0|0] "" PC
+ SG_ State : 8|8@1+ (1,0) [0|0] "" PC
+ SG_ Faults : 16|16@1+ (1,0) [0|0] "" PC
+ SG_ ProfileIndex : 32|16@1+ (1,0) [0|0] "" PC
+ SG_ TelemetryRateHz : 48|16@1+ (1,0) [0|0] "Hz" PC
+
+BO_ 1553 DynoDrive: 8 RP2040
+ SG_ TargetPressure : 0|32@1+ (1,0) [0|0] "psi" PC
+ SG_ SignedDuty : 32|16@1- (0.001,0) [0|0] "" PC
+ SG_ Reserved : 48|16@1+ (1,0) [0|0] "" PC
+
+BO_ 1568 DynoCommand: 8 PC
+ SG_ Operation : 0|8@1+ (1,0) [0|0] "" PC
+ SG_ Version : 8|8@1+ (1,0) [0|0] "" PC
+ SG_ Token : 16|16@1+ (1,0) [0|0] "" PC
+ SG_ Argument : 32|32@1+ (1,0) [0|0] "" PC
+
+BO_ 1569 DynoProfilePoint: 8 PC
+ SG_ ProfileId : 0|8@1+ (1,0) [0|0] "" PC
+ SG_ Index : 8|8@1+ (1,0) [0|0] "" PC
+ SG_ TimeMs : 16|32@1+ (1,0) [0|0] "ms" PC
+ SG_ Pressure : 48|16@1+ (0.1,0) [0|0] "psi" PC
+
+BO_ 1570 DynoAcknowledgement: 8 RP2040
+ SG_ Operation : 0|8@1+ (1,0) [0|0] "" PC
+ SG_ Result : 8|8@1+ (1,0) [0|0] "" PC
+ SG_ Token : 16|16@1+ (1,0) [0|0] "" PC
+ SG_ Value : 32|32@1+ (1,0) [0|0] "" PC
+
+BO_ 1571 DynoGain: 8 PC
+ SG_ Term : 0|8@1+ (1,0) [0|0] "" PC
+ SG_ Version : 8|8@1+ (1,0) [0|0] "" PC
+ SG_ Token : 16|16@1+ (1,0) [0|0] "" PC
+ SG_ Gain : 32|32@1+ (1,0) [0|0] "" PC
+
+SIG_VALTYPE_ 1536 Value : 1;
+SIG_VALTYPE_ 1537 Value : 1;
+SIG_VALTYPE_ 1538 Value : 1;
+SIG_VALTYPE_ 1539 Value : 1;
+SIG_VALTYPE_ 1540 Value : 1;
+SIG_VALTYPE_ 1553 TargetPressure : 1;
+SIG_VALTYPE_ 1571 Gain : 1;
+VAL_ 1552 State 0 "DISARMED" 1 "READY" 2 "RUNNING" 3 "ESTOP" 4 "FAULT" 5 "COMPLETE";
